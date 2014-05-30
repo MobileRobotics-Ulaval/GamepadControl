@@ -37,23 +37,27 @@ while True:
     pygame.event.wait() # Prevent from using all resources
     pygame.event.get()
 
-    if joystick.get_button(buttonBACK) and joystick.get_button(buttonSTART):
+    if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonY) and joystick.get_button(buttonB) and joystick.get_button(buttonLT) and joystick.get_button(buttonLB) and joystick.get_button(buttonBACK):
+        os.system("echo " + userPassword + " | sudo -S poweroff")
+        time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
+            
+    elif joystick.get_button(buttonBACK) and joystick.get_button(buttonSTART):
         pygame.quit()
         sys.exit()
 
-    if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonBACK):
+    elif joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonBACK):
         os.system("echo " + userPassword + " | sudo -S service husky-core stop")
         time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
 
-    if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonSTART):
+    elif joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonSTART):
         os.system("echo " + userPassword + " | sudo -S service husky-core start")
         time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
 
-    if joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonSTART):
+    elif joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonSTART):
         os.system("roslaunch /home/administrator/ros_uLaval/ptu_laser_assembler/launch/husky_ptu_assembler.launch &")
         time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
         
-    if joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonBACK):
+    elif joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonBACK):
         os.system("pkill -SIGINT ptu_scan_assemb")
         time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
         
