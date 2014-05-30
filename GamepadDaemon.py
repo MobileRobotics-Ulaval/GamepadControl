@@ -34,7 +34,8 @@ while True:
 
     # Press B + Y + START to start the scanning node
     if joystick.get_button(2) == 1 and joystick.get_button(3) == 1 and joystick.get_button(9) == 1:
-        os.system("roslaunch ptu_laser_assembler husky_ptu_assembler.launch &")
+        os.system("roslaunch /home/administrator/ros_uLaval/ptu_laser_assembler/launch/husky_ptu_assembler.launch &")
+        #os.system("nano test")
         time.sleep(1) # Just to prevent keypress repeat
         
     # Press B + Y + STOP to stop the scanning node
