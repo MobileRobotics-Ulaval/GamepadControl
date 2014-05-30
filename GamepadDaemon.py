@@ -6,39 +6,57 @@ import sys
 import pygame
 from pygame.locals import *
 
+userPassword = "clearpath" # to run "sudo" commands
+sleepTimeAfterExecCmd = 1 # in second
+
+defaultJoystickID = 0
+
+buttonX = 0
+buttonA = 1
+buttonB = 2
+buttonY = 3
+buttonLB = 4
+buttonRB = 5
+buttonLT = 6
+buttonRT = 7
+buttonBACK = 8
+buttonSTART = 9
+buttonLeftAxis = 10
+buttonRightAxis = 11
+# I restricted myself to the 0/1 buttons ...
+
 pygame.init()
 
 if pygame.joystick.get_count() == 0:
     print ("Error, I did not find any joysticks")
 else:
-    joystick = pygame.joystick.Joystick(0)
+    joystick = pygame.joystick.Joystick(defaultJoystickID)
     joystick.init()
 
 while True:
+    pygame.event.wait() # Prevent from using all resources
     pygame.event.get()
 
-    # Press back and start to quit this gamepad control application
-    if joystick.get_button(8) == 1 and joystick.get_button(9) == 1:
+    if joystick.get_button(buttonBACK) and joystick.get_button(buttonSTART):
         pygame.quit()
         sys.exit()
 
-    # Press X + A + BACK to stop all ROS stuff on the robot
-    if joystick.get_button(0) == 1 and joystick.get_button(1) == 1 and joystick.get_button(8) == 1:
-        os.system("echo clearpath | sudo -S service husky-core stop")
-        time.sleep(1) # Just to prevent keypress repeat
+    if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonBACK):
+        os.system("echo " + userPassword + " | sudo -S service husky-core stop")
+        time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
 
-    # Press X + A + START to start all ROS stuff on the robot
-    if joystick.get_button(0) == 1 and joystick.get_button(1) == 1 and joystick.get_button(9) == 1:
-        os.system("echo clearpath | sudo -S service husky-core start")
-        time.sleep(1) # Just to prevent keypress repeat
+    if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonSTART):
+        os.system("echo " + userPassword + " | sudo -S service husky-core start")
+        time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
 
-    # Press B + Y + START to start the scanning node
-    if joystick.get_button(2) == 1 and joystick.get_button(3) == 1 and joystick.get_button(9) == 1:
+    if joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonSTART):
         os.system("roslaunch /home/administrator/ros_uLaval/ptu_laser_assembler/launch/husky_ptu_assembler.launch &")
-        #os.system("nano test")
-        time.sleep(1) # Just to prevent keypress repeat
+        time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
         
-    # Press B + Y + STOP to stop the scanning node
-    if joystick.get_button(2) == 1 and joystick.get_button(3) == 1 and joystick.get_button(8) == 1:
+    if joystick.get_button(buttonB) and joystick.get_button(buttonY) and joystick.get_button(buttonBACK):
         os.system("pkill -SIGINT ptu_scan_assemb")
-        time.sleep(1) # Just to prevent keypress repeat
+        time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
+        
+        
+        
+        
