@@ -1,6 +1,6 @@
 #GamepadControl
 
-This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the commands associated. This 
+This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the command associated. This 
 
 
 ## Dependencies
@@ -11,7 +11,7 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
     - For more information on Python check their [website](https://www.python.org/)
 - Pygame (1.9.1 from source used)
     - You will also need pygame library to use the gamepad functions
-    - It is possible to install it using *apt-get install*, but I suggest to compile it directly from the source code (there is nasty debug output with the *apt-get install* version)
+    - It is possible to install it using *apt-get install*, but I suggest to compile it directly from the source code (there is nasty debug outputs with the *apt-get install* version)
         1. Install pygame dependencies:
             - *sudo apt-get install mercurial python-dev python-numpy ffmpeg \
             libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsmpeg-dev \
@@ -29,7 +29,8 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
     - *sudo apt-get install joystick*
     - The joystick/gamepad device should be in */dev/input/js0*, check it with the command: 
         - *ls /dev/input*
-    - You can check the gamepad buttons' mapping*jstest --event /dev/input/js0*
+    - You can check the gamepad button mapping using this command (press a button and the ID will be output):
+        - *jstest --event /dev/input/js0*
 2. Clone the code on your computer (let's use the home folder again)
     - *sudo apt-get install git-core*
     - *cd ~/*
@@ -38,7 +39,7 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
     - *cd ~/GamepadControl/*
     - *chmod +x GamepadDaemon.py*
     - *./GamepadDaemon.py*
-4. Take a look at the code to see the different command mapped
+4. Take a look at the code to see the different commands mapped
     - For instance: BACK+START (button 8 + button 9) will stop the application
 
 ## Launch the daemon at system startup
