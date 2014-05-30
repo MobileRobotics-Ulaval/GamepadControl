@@ -1,6 +1,6 @@
 #GamepadControl
 
-This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the command associated. This 
+This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the command associated. This code was used on Ubuntu 12.04/Mint 13 and most of the tools were already installed (python, git, crontab...). 
 
 
 ## Dependencies
@@ -43,9 +43,19 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
     - For instance: BACK+START (button 8 + button 9) will stop the application
 
 ## Launch the daemon at system startup
-Since we use the application to reduce the use of a computer connected to the robot via ssh, the gamepad control application must be started at computer startup. I struggled to find a working solution for this...
+Since we use the application to reduce the use of a computer connected to the robot via ssh, the gamepad control application must be started at computer startup (I struggled to find a working solution to do this and even tho it works right now, I guess there is a better solution... Feel free to send me a email if you find one).
 
+1. You will have to add the *StartScreen.sh* to crontab with the *@reboot* tag:
+    - *crontab -e*
+    - add the following line at the end (using your GamepadControl path)
+        - *@reboot yourGamepadControlPath/StartScreen.sh*
+2. You will have to change the *StartScreen.sh* script to put any required environment variable. In my case I needed these for ROS:
+    - *source /opt/ros/fuerte/setup.bash*
+    - *export ROS_PACKAGE_PATH="/home/administrator/ros_uLaval":$ROS_PACKAGE_PATH*
+3. You will also have to change the path to your GamepadDaemon.py in the following line
+        - *screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py*
 
+That's it, you should be all set.
 
 ## Note
-Feel free to send me a email (sebastien.michaud.2@gmail.com) if you find any error or imcomplete information in the README or the code (I did it kind of fast and I didn't do the whole process to make sure it is all perfect).
+Feel free to send me a email (sebastien.michaud.2@gmail.com) if you find any error or incomplete information in the README or the code (I did it kind of fast and I didn't do the whole process again to make sure it is all perfect).
