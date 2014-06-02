@@ -1,4 +1,6 @@
 #!/bin/sh
+
+# This is a template to start the daemon as a service in /etc/init.d, but used crontab instead (this version does not work, but It will probably work if you start Startscreen.sh instead)
  
 ### BEGIN INIT INFO
 # Provides:          myservice
