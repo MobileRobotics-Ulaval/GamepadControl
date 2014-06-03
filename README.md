@@ -66,8 +66,11 @@ Since we use the application to reduce the use of a computer connected to the ro
     - If the file */home/yourusername/.bash-profile* does not exist, create it.
     - Then add those line to the file:
         - ``if [ -f ~/.bashrc ]; then
+        
              source ~/.bashrc
+
            fi
+           
            screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py``
 
 
