@@ -62,8 +62,7 @@ Since we use the application to reduce the use of a computer connected to the ro
         - *exec /sbin/getty -8 38400 tty1*
     - save and exit,
     - do the same changes to the */etc/init/tty6.conf* file.
-3. Finally, you will have to set your computer to start the GamepadDaemon.py in a screen session when you start a login shell
-    - Check (http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html) for more details
+3. Finally, you will have to set your computer to start the GamepadDaemon.py in a screen session when you start a login shell (http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
     - If the file */home/yourusername/.bash-profile* does not exist, create it.
     - Then add those line to the file:
         - *to be added*
