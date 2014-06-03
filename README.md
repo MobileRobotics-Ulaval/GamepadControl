@@ -1,6 +1,6 @@
 #GamepadControl
 
-This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the command associated. This code was used on Ubuntu 12.04/Mint 13 and most of the tools were already installed (python, git, crontab...). 
+This project was created to launch linux command using a gamepad (shortcuts). The main file is GamepadDaemon.py. This script waits for input of the gamepad and executes the command associated. This code was used on Ubuntu 12.04/Mint 13 and most of the tools were already installed. Note: with the actual system don't use ``sudo poweroff`` to stop the computer, use ``sudo shutdown now`` (else the script won't launch on startup). 
 
 
 ## Dependencies
