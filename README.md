@@ -67,7 +67,7 @@ Since we use the application to reduce the use of a computer connected to the ro
     - Then add those line to the file: <pre><code>if [ -f ~/.bashrc ]; then
             source ~/.bashrc
     fi
-    screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py
+    screen -d -m python /home/yourusername/GamepadControl/GamepadDaemon.py
     </pre></code>
 
 
