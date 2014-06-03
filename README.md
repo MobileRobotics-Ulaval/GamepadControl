@@ -23,6 +23,11 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
             - *cd pygame*
             - *python setup.py build*
             - *sudo python setup.py install*
+- Tendo (https://pypi.python.org/pypi/tendo/0.2.4)
+    - In order to ensure there is only one instance of the application running at at time, we used Tendo
+    - For installation you can use easy_install :
+        - *sudo easy_install tendo*
+        - *sudo pip install tendo*
 
 ## Using the application
 1. Check the gamepad input and button mapping
@@ -45,15 +50,24 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
 ## Launch the daemon at system startup
 Since we use the application to reduce the use of a computer connected to the robot via ssh, the gamepad control application must be started at computer startup (I struggled to find a working solution to do this and even tho it works right now, I guess there is a better solution... Feel free to send me a email if you find one).
 
-1. You will have to add the *StartScreen.sh* to crontab with the *@reboot* tag:
-    - *crontab -e*
-    - add the following line at the end (using your GamepadControl path)
-        - *@reboot yourGamepadControlPath/StartScreen.sh*
-2. You will have to change the *StartScreen.sh* script to put any required environment variable. In my case I needed these for ROS:
-    - *source /opt/ros/fuerte/setup.bash*
-    - *export ROS_PACKAGE_PATH="/home/administrator/ros_uLaval":$ROS_PACKAGE_PATH*
-3. You will also have to change the path to your GamepadDaemon.py in the following line
-        - *screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py*
+1. Our computer already start in console mode (no desktop GUI). To set your computer the same way:
+    1. sudo nano /etc/default/grub
+    2. set the *GRUB_CMDLINE_LINUX_DEFAULT* parameter to text:
+        - *GRUB_CMDLINE_LINUX_DEFAULT="text"*
+    3. For the change to apply, save and exit, then type
+        - *sudo update-grub*
+2. You will have to set the computer to logon automatically on startup:
+    - sudo nano /etc/init/tty1.conf
+    - add *-a <your-user-name>* at the end of the following line 
+    - *exec /sbin/getty -8 38400 tty1*
+    - save and exit,
+    - do the same changes to the */etc/init/tty6.conf* file.
+3. Finally, you will have to set your computer to start the GamepadDaemon.py in a screen session when you start a login shell
+    - Check (http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html) for more details
+    - If the file */home/yourusername/.bash-profile* does not exist, create it.
+    - Then add those line to the file:
+        - *to be added*
+
 
 That's it, you should be all set.
 
