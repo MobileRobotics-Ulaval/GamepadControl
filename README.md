@@ -51,7 +51,7 @@ This project was created to launch linux command using a gamepad (shortcuts). Th
 Since we use the application to reduce the use of a computer connected to the robot via ssh, the gamepad control application must be started at computer startup (I struggled to find a working solution to do this and even tho it works right now, I guess there is a better solution... Feel free to send me a email if you find one).
 
 1. Our computer already start in console mode (no desktop GUI). To set your computer the same way:
-    1. sudo nano /etc/default/grub
+    1. ``sudo nano /etc/default/grub``
     2. set the ``GRUB_CMDLINE_LINUX_DEFAULT`` parameter to text:
         - ``GRUB_CMDLINE_LINUX_DEFAULT="text"``
     3. For the change to apply, save and exit, then type
