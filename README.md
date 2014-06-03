@@ -65,13 +65,10 @@ Since we use the application to reduce the use of a computer connected to the ro
 3. Finally, you will have to set your computer to start the GamepadDaemon.py in a screen session when you start a login shell (http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
     - If the file */home/yourusername/.bash-profile* does not exist, create it.
     - Then add those line to the file:
-        - ``if [ -f ~/.bashrc ]; then
-        
-             source ~/.bashrc
-
-           fi
-           
-           screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py``
+    if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
+    fi
+    screen -d -m python /home/administrator/GamepadControl/GamepadDaemon.py``
 
 
 That's it, you should be all set.
