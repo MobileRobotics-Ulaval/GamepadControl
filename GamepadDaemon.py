@@ -5,6 +5,10 @@ import time
 import sys
 import pygame
 from pygame.locals import *
+from tendo import singleton
+
+# This line prevent multiple executions of this script at the same time
+me = singleton.SingleInstance()
 
 userPassword = "clearpath" # to run "sudo" commands
 sleepTimeAfterExecCmd = 1 # in second
