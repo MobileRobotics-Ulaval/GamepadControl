@@ -42,7 +42,7 @@ while True:
     pygame.event.get()
 
     if joystick.get_button(buttonX) and joystick.get_button(buttonA) and joystick.get_button(buttonY) and joystick.get_button(buttonB) and joystick.get_button(buttonLT) and joystick.get_button(buttonLB) and joystick.get_button(buttonBACK):
-        os.system("echo " + userPassword + " | sudo -S poweroff")
+        os.system("echo " + userPassword + " | sudo -S shutdown now")
         time.sleep(sleepTimeAfterExecCmd) # Just to prevent keypress repeat
             
     elif joystick.get_button(buttonBACK) and joystick.get_button(buttonSTART):
