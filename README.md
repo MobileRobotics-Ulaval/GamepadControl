@@ -58,8 +58,8 @@ Since we use the application to reduce the use of a computer connected to the ro
         - *sudo update-grub*
 2. You will have to set the computer to logon automatically on startup:
     - sudo nano /etc/init/tty1.conf
-    - add *-a <your-user-name>* at the end of the following line 
-    - *exec /sbin/getty -8 38400 tty1*
+    - add *-a yourusername* at the end of the following line 
+        - *exec /sbin/getty -8 38400 tty1*
     - save and exit,
     - do the same changes to the */etc/init/tty6.conf* file.
 3. Finally, you will have to set your computer to start the GamepadDaemon.py in a screen session when you start a login shell
